@@ -17,7 +17,7 @@
 
 * url
 
-  >1. **train_date:** 查询的时间
+  >1. **station_version:** 版本
   >
   >```python
   >url = 'https://kyfw.12306.cn/otn/resources/js/framework/station_name.js?station_version=1.8968'
@@ -25,7 +25,7 @@
 
 * response 
 
-  > 1. **格式:** 查询的时间
+  > 1. **格式:** `@+bjb+北京北+VAP+beijingbei+bjb+0` ， `@`开始以`|`分割
   >
   > ```python
   > response = "var station_names ='@bjb|北京北|VAP|beijingbei|bjb|0@bjd|北京东|BOP|beijingdong|bjd|1@bji|北京|BJP|beijing|bj|2@bjn|北京南|VNP|beijingnan|bjn|3@bjx|北京西|BXP|beijingxi|bjx|4@gzn|广州南|IZQ|guangzhounan|gzn|5'"
@@ -35,7 +35,7 @@
 
 * url
 
-  > 1. **train_date:** 查询的时间
+  > 1. **scriptVersion:** 版本
   >
   > ```python
   > url = 'https://kyfw.12306.cn/otn/resources/js/query/train_list.js?scriptVersion=1.5462'
@@ -43,7 +43,8 @@
 
 * response
 
-  > 1. **train_date:** 查询的时间
+  > 1. **station_train_code:** 车次名称+起始站点
+  > 2. **train_no：** 唯一编码
   >
   > ```python
   > url = "var train_list ={"2018-01-31":{},"2018-01-30":{},"2018-03-01":{},"2018-03-03":{},"2018-03-02":{},"2018-03-05":{},"2018-03-04":{},"2018-03-07":{},"2018-03-06":{},"2018-03-09":{},"2018-03-08":{},"2018-03-16":{},"2018-03-15":{},"2018-03-14":{},"2018-03-13":{},"2017-12-31":{"D":[{"station_train_code":"D1(北京-沈阳)","train_no":"24000000D10V"},{"station_train_code":"D2(沈阳-北京)","train_no":"12000000D20J"},{"station_train_code":"D3(北京-沈阳北)","train_no":"24000000D30Q"},{"station_train_code":"D4(沈阳北-北京)","train_no":"12000000D40E"},{"station_train_code":"D6(沈阳北-北京)","train_no":"12000000D60G"}],"Z":[{"station_train_code":"Z1(北京西-长沙)","train_no":"24000000Z10C"},{"station_train_code":"Z2(长沙-北京西)","train_no":"62000000Z201"},{"station_train_code":"Z3(北京西-重庆北)","train_no":"24000000Z30I"},{"station_train_code":"Z4(重庆北-北京西)"}]}}"
@@ -82,8 +83,8 @@
 - url
 
   > - **train_no:** 火车编号
-  > - **from_station：** 出发站点
-  > - **to_station:** 目的站点
+  > - **from_station：** 出发站点的编号（可以从查询火车票信息的response中获取）
+  > - **to_station:** 目的站点的编号
   > - **purpose_codes:** 成人票（`ADULT`）或学生票（`0x00`）
   >
   > ```python
@@ -94,13 +95,25 @@
 
   > 1. **train_date:** 查询的时间
   >
+  > 2. **类别**：
+  >
+  >    > A9:特等座
+  >    > M:一等座
+  >    > O:二等座
+  >    > A6:高级软卧
+  >    > A4:软卧
+  >    > A3:硬卧
+  >    > A2:软座
+  >    > A1:硬座
+  >    > WZ:无座
+  >    > F:动卧
+  >
+  > 3. ​
+  >
   > ```python
   > response = '{"validateMessagesShowId":"_validatorMessage","status":true,"httpstatus":200,"data":{"3":"925","A1":"¥46.5","1":"465","A4":"¥140.5","A3":"¥92.5","4":"1405","OT":[],"WZ":"¥46.5","train_no":"380000K1540D"},"messages":[],"validateMessages":{}}'
   > ```
   >
-  > ​
-  >
-  > ​
 
 ### ##二、
 
